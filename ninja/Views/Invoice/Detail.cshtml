@@ -1,0 +1,50 @@
+﻿@model ninja.model.Entity.Invoice
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+   
+</head>
+<body>
+
+    <div class="row" style="text-align:center;">
+        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Taxes</th>
+                    </tr>
+                </thead>
+                @foreach (var unDetalle in Model.GetDetail())
+                {
+                    <tr>
+                        <td>
+                            @unDetalle.Description
+                        </td>
+                        <td>
+                            @unDetalle.Taxes
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="row" style="text-align:center;">
+        <a class="btn btn-success" href="@Url.Action("New")">Go To New Invoice</a>
+    </div>
+    <div class="row" style="text-align:center;">
+        <a class="btn btn-success" href="@Url.Action("Delete")"> Go To Delete Invoice</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@model ninja.model.Mock.InvoiceMock
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <script>
+
+
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 style="text-align:center;">Invoices </h4>
+            <hr />
+            <div>
+
+                    <table style="border: 1px solid black;" >
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>X</th>
+                            </tr>
+                        </thead>
+                        @foreach (var unInvoice in Model.GetAll())
+                        {
+                            <tr>
+                                <td>
+                                    @unInvoice.Id
+                                </td>
+                                <td>
+                                    @unInvoice.Type
+                                </td>
+                                <td>
+                                    @unInvoice.Price
+                                </td>
+                                <td>
+                                    <a class="btn btn-success" href="@Url.Action("Delete", new {id = unInvoice.Id })">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+              
+            </div>
+
+           
+        </div>
+    }
+    
+    <div class="row" style="text-align:center;">
+        <a class="btn btn-success" href="@Url.Action("New")">New Invoice</a>
+    </div>
+</body>
+</html>
